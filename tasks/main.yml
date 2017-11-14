@@ -1,2 +1,23 @@
 ---
 # tasks file for php
+
+- name: Install php
+  package:
+    name: php-fpm
+    state: present
+    update_cache: "yes"
+
+- name: Install php php php extensions
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: "yes"
+  with_items: "{{ php_extensions }}"
+
+- name: php.ini fix (cgi.fix_pathinfo)
+  lineinfile:
+    dest: "{{ php_ini_path }}"
+    state: present
+    regexp: '^;?cgi.fix_pathinfo=1'
+    backrefs: "yes"
+    line: 'cgi.fix_pathinfo=0'

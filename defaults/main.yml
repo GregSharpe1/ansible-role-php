@@ -1,2 +1,12 @@
 ---
 # defaults file for php
+php_extensions:
+  - php-mysql
+  - php-curl
+  - php-gd
+  - php-mbstring
+  - php-mcrypt
+  - php-xml
+  - php-xmlrpc
+
+php_ini_path: /etc/php/7.0/fpm/php.ini

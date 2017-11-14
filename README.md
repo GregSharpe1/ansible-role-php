@@ -1,31 +1,48 @@
-Role Name
+ansible-role-php
 =========
 
-A brief description of the role goes here.
+Install and configure php-fpm and extensions.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
+
+This role has been tested solely against Ubuntu Xenial (16.04 LTS). This role
+may work against other distros, but it has not been tested.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name | Default | Description |
+|------|---------|-------------|
+| `php_extensions` | `[ php-mysql, php-curl, php-gd, php-mbstring, php-mcrypt, php-xml, php-xmlrpc`] | List variable of php extenion packages to be installed. Defaults are the typical requirements for a wordpress installation. |
+| `php_ini_path` | `/etc/php/7.0/fpm/php.ini` | `Path for the php.ini configuration file` |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
-Example Playbook
-----------------
+Testing
+-------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+This role has [molecule](http://molecule.readthedocs.io/en/latest/) (v2.0.0.0rc11) testing. The molcule configuration can be found under `molecule/`. Testing is done through the [testinfra](http://testinfra.readthedocs.io/en/latest) framework.
+
+Tests are currently configured to use the `vagrant` provider against `ubuntu/xenial64`.
+
+Usage
+-----
 
     - hosts: servers
+      become: yes
+      become_user: root
+      become_method: sudo
+      vars:
+        php_extensions:
+          - php-curl
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ansible-role-php }
 
 License
 -------
@@ -35,4 +52,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Nathan Davies ~ [ndavies.io](https://ndavies.io) ~ [me@ndavies.io](mailto://me@ndavies.io)

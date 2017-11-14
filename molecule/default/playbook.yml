@@ -8,5 +8,8 @@
       changed_when: "False"
 
 - hosts: all
+  become: "True"
+  become_user: root
+  become_method: sudo
   roles:
     - role: ansible-role-php

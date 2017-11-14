@@ -12,7 +12,7 @@ lint:
     d: {extends: default, rules: {line-length: {max: 120}, braces: {max-spaces-inside: 2}}}
 platforms:
   - name: instance
-    box: debian/jessie64
+    box: ubuntu/xenial64
 provisioner:
   name: ansible
   lint:

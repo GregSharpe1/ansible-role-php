@@ -20,8 +20,8 @@ def test_php_extensions_install(host, defaults):
         assert host.package(package).is_installed
 
 
-def test_php_ini_security_fix(host):
-    php_ini = host.file("/etc/php/7.0/fpm/php.ini")
+def test_php_ini_security_fix(host, defaults):
+    php_ini = host.file(defaults['php_ini_path'])
 
     assert php_ini.contains("cgi.fix_pathinfo=0")
     assert not php_ini.contains(";cgi.fix_pathinfo")
