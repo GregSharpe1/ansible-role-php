@@ -1,0 +1,5 @@
+{
+  "tests/test_default.py::test_php_extensions_install[ansible://instance-default]": true, 
+  "tests/test_default.py::test_php_fpm_install[ansible://instance-default]": true, 
+  "tests/test_default.py::test_php_ini_security_fix[ansible://instance-default]": true
+}

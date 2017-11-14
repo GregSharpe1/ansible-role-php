@@ -4,10 +4,15 @@ dependency:
 driver:
   name: vagrant
 lint:
-  name: ansible-lint
+  name: yamllint
+  options:
+    # Override for the line-length linting rule. This is generated due to a
+    # formatting error in defaults when the pip_index_url value is piped onto
+    # a new line.
+    d: {extends: default, rules: {line-length: {max: 120}, braces: {max-spaces-inside: 2}}}
 platforms:
-  - name: instance-1
-    box: ubuntu/xenial64
+  - name: instance
+    box: debian/jessie64
 provisioner:
   name: ansible
   lint:
