@@ -14,10 +14,10 @@
     update_cache: "yes"
   with_items: "{{ php_extensions }}"
 
-- name: php.ini fix (cgi.fix_pathinfo)
-  lineinfile:
-    dest: "{{ php_ini_path }}"
-    state: present
-    regexp: '^;?cgi.fix_pathinfo=1'
-    backrefs: "yes"
-    line: 'cgi.fix_pathinfo=0'
+# - name: php.ini fix (cgi.fix_pathinfo)
+#   lineinfile:
+#     dest: "{{ php_ini_path }}"
+#     state: present
+#     regexp: '^;?cgi.fix_pathinfo=1'
+#     backrefs: "yes"
+#     line: 'cgi.fix_pathinfo=0'
